@@ -144,6 +144,7 @@ def run_benchmark():
         # or
         # with tf.Session(graph=graph) as sess:
         #   tf.global_variables_initializer().run()
+        summary_writer = tf.train.SummaryWriter('/tmp/alexnet', sess.graph)
 
         time_tensorflow_run(sess, pool5, 'Forward')
 
