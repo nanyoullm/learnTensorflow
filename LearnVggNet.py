@@ -138,13 +138,14 @@ def run_benchmark():
 
         init = tf.global_variables_initializer()
         sess = tf.Session()
-
         sess.run(init)
+        summary_writer = tf.train.SummaryWriter('/tmp/vggnet', sess.graph)
 
         time_tensorflow_run(sess, predictions, {keep_prob: 1.0}, 'Forward')
+
         objective = tf.nn.l2_loss(fc8)
         grad = tf.gradients(objective, p)
-
         time_tensorflow_run(sess, grad, {keep_prob: 0.5}, 'Forward-Backward')
+
 
 run_benchmark()
