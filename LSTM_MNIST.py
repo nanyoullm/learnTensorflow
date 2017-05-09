@@ -64,6 +64,7 @@ init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
     sess.run(init)
+    summary_writer = tf.train.SummaryWriter('/tmp/lstm_mnist', sess.graph)
     step = 0
 
     while step * batch_size < training_iters:
